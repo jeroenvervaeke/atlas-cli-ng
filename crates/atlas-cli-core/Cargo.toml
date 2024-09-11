@@ -1,0 +1,9 @@
+[package]
+name = "atlas-cli-core"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+config = "0.14.0"
+dirs = "5.0.1"
+thiserror = "1.0.63"
