@@ -13,3 +13,7 @@ serde = { version = "1.0.210", features = ["derive"] }
 thiserror = "1.0.63"
 toml = "0.8.19"
 url = { version = "2.5.2", features = ["serde"] }
+
+[[bin]]
+name = "example-profile"
+path = "examples/profile.rs"
