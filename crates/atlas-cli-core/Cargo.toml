@@ -3,8 +3,9 @@ name = "atlas-cli-core"
 description = "Core library to interact with the MongoDB Atlas CLI"
 license = "MIT"
 authors = ["Jeroen Vervaeke <crates.contact.6yqd3@8alias.com>"]
-version = "0.2.0"
+version = "0.3.0"
 edition = "2021"
+exclude = ["examples/"]
 
 [dependencies]
 dirs = "5.0.1"
