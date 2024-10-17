@@ -3,29 +3,22 @@ use std::{error::Error, str::FromStr};
 use atlas_cli_core::{paths::Paths, profile::ProfileFile};
 use url::Url;
 
-fn main() -> Result<(), Box<dyn Error>> {
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn Error>> {
     let paths = Paths::new()?;
     let profile_path = paths.profile_path().to_string_lossy().to_string();
-    let mut profile_file = ProfileFile::load(&profile_path)?;
-    profile_file.init_default_profile();
-    let profile = profile_file.default_profile().unwrap();
-    println!("default profile: {profile:?}");
-    println!(
-        "profile names: {:?}",
-        profile_file.profile_names().collect::<Vec<_>>()
-    );
+    println!("profile path: {profile_path}");
+    let mut profile_file = ProfileFile::load(&profile_path).await?;
+    println!("profile_file: {profile_file:#?}");
 
-    profile_file.init_profile("test");
-    if let Some(test_profile) = profile_file.profile_mut("test") {
-        test_profile.ops_manager_url = Some(Url::from_str("https://jev.sh").unwrap());
-        println!("test profile: {test_profile:?}");
+    if let Some(default_profile) = &mut profile_file.default_profile {
+        default_profile.base_url = Some(Url::from_str("http://example.com/").expect("valid url"));
     }
 
-    profile_file.save(&profile_path)?;
-    println!(
-        "new profile names: {:?}",
-        profile_file.profile_names().collect::<Vec<_>>()
-    );
+    println!();
+    println!("updated profile_file: {profile_file:#?}");
+
+    profile_file.save(profile_path).await?;
 
     Ok(())
 }
