@@ -1,0 +1,19 @@
+[package]
+name = "atlas-cli"
+version = "0.1.0"
+edition = "2021"
+description = """
+atlas-cli-ng is a command line interface built to interact with MongoDB Atlas.
+
+The atlas-cli-ng provides:
+- a set of commands which align 1:1 with the atlas admin api
+- a set of commands which align with the admin api but provide sensible defaults
+"""
+license = "MIT"
+authors = ["Jeroen Vervaeke <crates.contact.6yqd3@8alias.com>"]
+
+[dependencies]
+anyhow = "1.0.91"
+atlas-cli-core = { path = "../atlas-cli-core" }
+clap = { version = "4.5.20", features = ["cargo", "derive"] }
+tokio = { version = "1.41.0", features = ["full"] }
