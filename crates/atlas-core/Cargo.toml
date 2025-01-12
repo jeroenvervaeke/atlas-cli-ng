@@ -1,0 +1,9 @@
+[package]
+name = "atlas-core"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+url = "2.5"
+atlas-derive = { path = "../atlas-derive" }
+atlas-derive-core = { path = "../atlas-derive-core" }

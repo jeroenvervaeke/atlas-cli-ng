@@ -1,0 +1,18 @@
+[package]
+name = "atlas-derive"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = { version = "2.0", features = ["full"] }
+quote = "1.0"
+proc-macro2 = "1.0"
+atlas-derive-core = { path = "../atlas-derive-core" }
+
+[dev-dependencies]
+trybuild = "1.0"
+url = "2.5"
+atlas-core = { path = "../atlas-core" }
